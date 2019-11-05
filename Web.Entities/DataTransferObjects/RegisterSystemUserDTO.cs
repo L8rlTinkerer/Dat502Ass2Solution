@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Web.Entities.DataTransferObjects
 {
-    public class RegisterDTO
+    public class RegisterSystemUserDTO
     {
         [MaxLength(50, ErrorMessage = "FirstName can be no more than 50 characters.")]
         [Required(ErrorMessage = "Please add a First Name")]
@@ -30,8 +30,8 @@ namespace Web.Entities.DataTransferObjects
 
         public AddressDTO AddressNoNavigation { get; set; }
 
-        [Range(1,5, ErrorMessage = "User type selection is beteem 1 and 5")]
-        [Required(ErrorMessage = "Select a user type")]
+
         public int SystemUserType { get; set; }
+
     }
 }

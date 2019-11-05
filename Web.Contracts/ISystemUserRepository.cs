@@ -12,9 +12,9 @@ namespace Web.Contracts
 
         LoginResponseDTO Login(LoginDTO login);
         TblSystemUser Register(RegisterClientDTO userRego);
-        TblSystemUser GetRegisteredClientSystemUser(RegisterClientDTO userRego);
-        TblClient RegisterClient(RegisterClientDTO clientRego);
-        TblStaff RegisterStaff(RegisterClientDTO userRego);
+        TblSystemUser GetRegisteredClientSystemUser(RegisterSystemUserDTO userRego);
+        //TblClient RegisterClient(RegisterClientDTO clientRego);
+        //TblStaff RegisterStaff(RegisterClientDTO userRego);
     }
 
 

@@ -58,7 +58,7 @@ namespace Web.API
 
         // POST api/<controller>
         [HttpPost("register")]
-        public IActionResult Register([FromBody]RegisterDTO userRego)
+        public IActionResult Register([FromBody]RegisterClientDTO userRego)
         {
             if (!ModelState.IsValid)
             {
@@ -75,13 +75,34 @@ namespace Web.API
             _repository.SystemUser.Create(user);
 
             _repository.Save();
-            
-            if (userRego.SystemUserType == 4)
+
+
+            /*
+            if (userRego.SystemUserType.SystemUserNo == 1 || 2 || 3)
             {
                 
-                //var client = _repository.Client.RegisterClient
+                var user = _repository.SystemUser.GetRegisteredClientSystemUser(userRego);
+
+                if (user == null)
+                {
+                    return BadRequest("User does not exist");
+                }
+
+                var client = _repository.Client.RegisterClient(userRego);
+
+                if (client == null)
+                {
+                    return BadRequest("Client already exists");
+                }
+
+                _repository.Client.Create(client);
+
+                _repository.Save();
+                
             }
 
+            //RegisterClient(userRego);
+            */
 
 
             return Ok(
@@ -96,7 +117,8 @@ namespace Web.API
 
         }
 
-        public IActionResult RegisterClient([FromBody]RegisterDTO userRego)
+        /*
+        private IActionResult RegisterClient([FromBody]RegisterSystemUserDTO userRego)
         {
             var user = _repository.SystemUser.GetRegisteredClientSystemUser(userRego);
 
@@ -105,42 +127,57 @@ namespace Web.API
                 return BadRequest("User does not exist");
             }
 
-            _repository.SystemUser.RegisterClient(userRego);
+            var client = _repository.Client.RegisterClient(userRego);
 
+            if (client == null)
+            {
+                return BadRequest("Client already exists");
+            }
+
+            _repository.Client.Create(client);
+
+            _repository.Save();
+
+            return Ok(
+                new RegisterResponseDTO
+                {
+                    Success = true,
+                    Message = "Client created successfully",
+                    JWT = null
+                }
+            );
             
+        }
+        */
 
-
-
+        /*
+        // GET: api/<controller>
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
         }
 
-            /*
-            // GET: api/<controller>
-            [HttpGet]
-            public IEnumerable<string> Get()
-            {
-                return new string[] { "value1", "value2" };
-            }
-
-            // GET api/<controller>/5
-            [HttpGet("{id}")]
-            public string Get(int id)
-            {
-                return "value";
-            }
-
-
-
-            // PUT api/<controller>/5
-            [HttpPut("{id}")]
-            public void Put(int id, [FromBody]string value)
-            {
-            }
-
-            // DELETE api/<controller>/5
-            [HttpDelete("{id}")]
-            public void Delete(int id)
-            {
-            }
-            */
+        // GET api/<controller>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
         }
+
+
+
+        // PUT api/<controller>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/<controller>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+        */
+    }
 }

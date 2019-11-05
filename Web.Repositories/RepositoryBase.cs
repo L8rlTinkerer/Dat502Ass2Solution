@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Web.Contracts;
+using Web.Entities.Mappers;
 using Web.Entities.Models;
 
 namespace Web.Repositories
@@ -28,6 +29,15 @@ namespace Web.Repositories
             return this.Dat502Ass2DBContext.Set<T>().Where(expression).AsNoTracking();
         }
 
+        public T Register(T entity)
+        {
+            var user = Dat502Ass2DBContext.Set<T>().Any(x => x.entity == entity.);
+
+            return user ? null : RegisterResponseToSystemUserMapper.Map(userRego);
+            
+        }
+
+
         public void Create(T entity)
         {
             this.Dat502Ass2DBContext.Set<T>().Add(entity);
@@ -43,6 +53,6 @@ namespace Web.Repositories
             this.Dat502Ass2DBContext.Set<T>().Remove(entity);
         }
 
-
+       
     }
 }

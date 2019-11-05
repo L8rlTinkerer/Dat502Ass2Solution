@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Web.Contracts;
 using Web.Entities.DataTransferObjects;
+using Web.Entities.Mappers;
 using Web.Entities.Models;
 
 namespace Web.Repositories
@@ -23,9 +24,12 @@ namespace Web.Repositories
 
         }
 
-        public TblClient RegisterClient(RegisterClientDTO userRego)
+        public TblClient RegisterClient(RegisterSystemUserDTO clientRego)
         {
-            throw new NotImplementedException();
+
+            var client = Dat502Ass2DBContext.TblClient.Any(x => x.SystemUserNo == clientRego.SystemUserType.SystemUserNo);
+
+            return client ? null : RegisterResponseToClientMapper.Map(clientRego);
         }
     }
 }
