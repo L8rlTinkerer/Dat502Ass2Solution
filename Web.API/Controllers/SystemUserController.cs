@@ -76,7 +76,14 @@ namespace Web.API
 
             _repository.Save();
             
-            
+            if (userRego.SystemUserType == 4)
+            {
+                
+                //var client = _repository.Client.RegisterClient
+            }
+
+
+
             return Ok(
                 new RegisterResponseDTO
                 {
@@ -89,34 +96,51 @@ namespace Web.API
 
         }
 
-        /*
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult RegisterClient([FromBody]RegisterDTO userRego)
         {
-            return new string[] { "value1", "value2" };
+            var user = _repository.SystemUser.GetRegisteredClientSystemUser(userRego);
+
+            if (user == null)
+            {
+                return BadRequest("User does not exist");
+            }
+
+            _repository.SystemUser.RegisterClient(userRego);
+
+            
+
+
+
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+            /*
+            // GET: api/<controller>
+            [HttpGet]
+            public IEnumerable<string> Get()
+            {
+                return new string[] { "value1", "value2" };
+            }
 
-        
+            // GET api/<controller>/5
+            [HttpGet("{id}")]
+            public string Get(int id)
+            {
+                return "value";
+            }
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+
+            // PUT api/<controller>/5
+            [HttpPut("{id}")]
+            public void Put(int id, [FromBody]string value)
+            {
+            }
+
+            // DELETE api/<controller>/5
+            [HttpDelete("{id}")]
+            public void Delete(int id)
+            {
+            }
+            */
         }
-        */
-    }
 }

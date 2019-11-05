@@ -10,6 +10,7 @@ namespace Web.Repositories
     {
         private Dat502Ass2DBContext _repoContext;
         private ISystemUserRepository _systemUser;
+        private IClientRepository _client;
 
         public ISystemUserRepository SystemUser
         {
@@ -24,7 +25,18 @@ namespace Web.Repositories
             }
         }
 
-       
+       public IClientRepository Client
+        {
+            get
+            {
+                if (_client == null)
+                {
+                    _client = new ClientRepository(_repoContext);
+                }
+
+                return _client;
+            }
+        }
 
         public RepositoryWrapper(Dat502Ass2DBContext dat502Ass2DBContext)
         {

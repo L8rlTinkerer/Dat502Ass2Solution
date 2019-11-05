@@ -30,7 +30,7 @@ namespace Web.Entities.Mappers
                 PhoneNumber = dto.PhoneNumber,
                 AddressNoNavigation = address,
                 AddressNo = address.AddressNo,
-                SystemUserTypeNo = 4 // At the point of coding, only one user type (client) was registering via this method.
+                SystemUserTypeNo = Convert.ToByte(dto.SystemUserType) 
             };
             
         }

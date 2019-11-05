@@ -29,5 +29,9 @@ namespace Web.Entities.DataTransferObjects
         public string PhoneNumber { get; set; }
 
         public AddressDTO AddressNoNavigation { get; set; }
+
+        [Range(1,5, ErrorMessage = "User type selection is beteem 1 and 5")]
+        [Required(ErrorMessage = "Select a user type")]
+        public int SystemUserType { get; set; }
     }
 }
