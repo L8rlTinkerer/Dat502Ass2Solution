@@ -35,7 +35,10 @@ namespace Web.Entities.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-          
+            if (!optionsBuilder.IsConfigured)
+            {
+
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -45,11 +48,9 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblAddress>(entity =>
             {
                 entity.HasKey(e => e.AddressNo)
-                    .HasName("PK__tbl_Addr__091C22A028971B99");
+                    .HasName("PK_Address");
 
                 entity.ToTable("tbl_Address");
-
-                entity.Property(e => e.AddressNo).ValueGeneratedNever();
 
                 entity.Property(e => e.CityOrTownName)
                     .IsRequired()
@@ -96,11 +97,9 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblBranch>(entity =>
             {
                 entity.HasKey(e => e.BranchNo)
-                    .HasName("PK__tbl_Bran__A16B446A14FCDF73");
+                    .HasName("PK_Branch");
 
                 entity.ToTable("tbl_Branch");
-
-                entity.Property(e => e.BranchNo).ValueGeneratedNever();
 
                 entity.Property(e => e.Phone)
                     .IsRequired()
@@ -136,7 +135,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblGender>(entity =>
             {
                 entity.HasKey(e => e.GenderNo)
-                    .HasName("PK__tbl_Gend__4E264A2017D82878");
+                    .HasName("PK__tbl_Gend__4E264A2041D9E842");
 
                 entity.ToTable("tbl_Gender");
 
@@ -183,7 +182,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblLeaseType>(entity =>
             {
                 entity.HasKey(e => e.LeaseTypeNo)
-                    .HasName("PK__tbl_Leas__F4D24D5E16A12616");
+                    .HasName("PK__tbl_Leas__F4D24D5E3E5F3A9A");
 
                 entity.ToTable("tbl_LeaseType");
 
@@ -216,7 +215,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblOwnerType>(entity =>
             {
                 entity.HasKey(e => e.OwnerTypeNo)
-                    .HasName("PK__tbl_Owne__CA4B541AA4D427DE");
+                    .HasName("PK__tbl_Owne__CA4B541A5F0B3F05");
 
                 entity.ToTable("tbl_OwnerType");
 
@@ -234,7 +233,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblPaymentMethod>(entity =>
             {
                 entity.HasKey(e => e.PaymentMethodNo)
-                    .HasName("PK__tbl_Paym__DC326B790EE93900");
+                    .HasName("PK__tbl_Paym__DC326B790762B5D0");
 
                 entity.ToTable("tbl_PaymentMethod");
 
@@ -290,7 +289,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblPropertyType>(entity =>
             {
                 entity.HasKey(e => e.PropertyTypeNo)
-                    .HasName("PK__tbl_Prop__BDE174D7F4FDC4FD");
+                    .HasName("PK__tbl_Prop__BDE174D7499F7F36");
 
                 entity.ToTable("tbl_PropertyType");
 
@@ -407,7 +406,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblSystemUserType>(entity =>
             {
                 entity.HasKey(e => e.SystemUserTypeNo)
-                    .HasName("PK__tbl_Syst__73D7BBFD8E807A00");
+                    .HasName("PK__tbl_Syst__73D7BBFD444A9694");
 
                 entity.ToTable("tbl_SystemUserType");
 

@@ -7,6 +7,6 @@ namespace Web.Contracts
     public interface IRepositoryWrapper
     {
         ISystemUserRepository SystemUser { get; }
-        bool Save();
+        void Save();
     }
 }

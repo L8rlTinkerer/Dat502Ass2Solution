@@ -31,9 +31,9 @@ namespace Web.Repositories
             _repoContext = dat502Ass2DBContext;
         }
 
-        public bool Save()
+        public void Save()
         {
-            return _repoContext.SaveChanges() > 0;
+            _repoContext.SaveChanges();
             
         }
     }

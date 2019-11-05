@@ -62,32 +62,30 @@ namespace Web.API
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return new UnprocessableEntityObjectResult(ModelState);
             }
 
-            var user = _repository.SystemUser.Register(userRego);
+            var user = _repository.SystemUser.Register(userRego); // checks if user exists already
 
             if (user == null)
             {
                 return BadRequest("User already exists");
             }
 
-            
-
             _repository.SystemUser.Create(user);
 
-            if (_repository.Save()){
-                return Ok(
-                    new RegisterResponseDTO
-                    {
-                        Success = true,
-                        Message = "User created successfully",
-                        JWT = null
-                    }
-                );
-            }
-
-            return BadRequest();
+            _repository.Save();
+            
+            
+            return Ok(
+                new RegisterResponseDTO
+                {
+                    Success = true,
+                    Message = "User created successfully",
+                    JWT = null
+                }
+            );
+               
 
         }
 

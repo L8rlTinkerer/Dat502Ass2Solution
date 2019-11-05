@@ -50,17 +50,12 @@ namespace Web.Repositories
 
         }
 
+        
         public TblSystemUser Register(RegisterDTO userRego)
         {
-            var user = Dat502Ass2DBContext.TblSystemUser.Select(x => x.UserName == userRego.UserName).FirstOrDefault();
+            var user = Dat502Ass2DBContext.TblSystemUser.Any(x => x.UserName == userRego.UserName);
 
-            if (user)
-            {
-                return null;
-            }
-
-            return RegisterResponseToSystemUserMapper.Map(userRego);
-
+            return user ? null : RegisterResponseToSystemUserMapper.Map(userRego);
         }
         
        
