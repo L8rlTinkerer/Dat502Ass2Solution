@@ -68,20 +68,14 @@ namespace Web.Repositories
             return user ? null : RegisterResponseToSystemUserMapper.Map(userRego);
         }
         
-        /*
-        public TblClient RegisterClient(RegisterClientDTO clientRego)
-        {
 
-            var client = Dat502Ass2DBContext.TblClient.Any(x => x.SystemUserNo == clientRego.SystemUserType.SystemUserNo);
-
-            return client ? null : RegisterResponseToClientMapper.Map(clientRego);
-        }
-        */
-        public TblStaff RegisterStaff(RegisterSystemUserDTO userRego)
+        public TblSystemUser RegisterClient(RegisterSystemUserDTO userRego)
         {
-            
-            return null;
+            var user = Dat502Ass2DBContext.TblSystemUser.Any(x => x.UserName == userRego.UserName);
+
+            return user ? null : RegisterResponseToSystemUserMapper.Map(userRego);
         }
 
+       
     }
 }

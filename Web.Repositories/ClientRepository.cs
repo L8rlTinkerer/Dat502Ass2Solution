@@ -24,10 +24,11 @@ namespace Web.Repositories
 
         }
 
-        public TblClient RegisterClient(RegisterSystemUserDTO clientRego)
+        public TblClient RegisterClient(RegisterClientDTO clientRego)
         {
 
-            var client = Dat502Ass2DBContext.TblClient.Any(x => x.SystemUserNo == clientRego.SystemUserType.SystemUserNo);
+            var client = Dat502Ass2DBContext.TblClient.Any(x => x.SystemUserNo == clientRego.SystemUserNo);
+            
 
             return client ? null : RegisterResponseToClientMapper.Map(clientRego);
         }

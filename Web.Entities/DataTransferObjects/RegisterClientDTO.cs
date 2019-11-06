@@ -7,7 +7,7 @@ namespace Web.Entities.DataTransferObjects
 {
     public class RegisterClientDTO
     {
-        RegisterSystemUserDTO ClientDetails { get; set; }
+        public int SystemUserNo { get; set; }
 
         [MaxLength(100, ErrorMessage = "PreferredAccomodationType notes can be no more than 100 characters.")]
         public string PreferredAccomodationType { get; set; }

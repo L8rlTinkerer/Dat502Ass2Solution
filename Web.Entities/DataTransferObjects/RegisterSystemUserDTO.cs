@@ -30,8 +30,11 @@ namespace Web.Entities.DataTransferObjects
 
         public AddressDTO AddressNoNavigation { get; set; }
 
+        public int SystemUserTypeNo { get; set; }
 
-        public int SystemUserType { get; set; }
-
+        
+        public string PreferredAccomodationType { get; set; }
+        public int MaximumRent { get; set; }
+        public bool IsActive { get; set; }
     }
 }

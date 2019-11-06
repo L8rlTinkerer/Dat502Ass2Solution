@@ -6,18 +6,17 @@ using Web.Entities.Models;
 
 namespace Web.Entities.Mappers
 {
-    public static class RegisterResponseToClientMapper
+    public static class RegisterSystemUserDTOtoRegisterClientDTOMapper
     {
-        public static TblClient Map(RegisterClientDTO dto)
+        public static RegisterClientDTO Map(RegisterSystemUserDTO dto, TblSystemUser su)
         {
-            return new TblClient
+            return new RegisterClientDTO
             {
-                SystemUserNo = dto.SystemUserNo,
+                SystemUserNo = su.SystemUserNo,
                 PreferredAccomodationType = dto.PreferredAccomodationType,
                 MaximumRent = dto.MaximumRent,
                 IsActive = dto.IsActive
             };
-            
         }
     }
 }

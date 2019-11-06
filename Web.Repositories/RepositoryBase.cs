@@ -29,6 +29,7 @@ namespace Web.Repositories
             return this.Dat502Ass2DBContext.Set<T>().Where(expression).AsNoTracking();
         }
 
+        /*(
         public T Register(T entity)
         {
             var user = Dat502Ass2DBContext.Set<T>().Any(x => x.entity == entity.);
@@ -36,7 +37,7 @@ namespace Web.Repositories
             return user ? null : RegisterResponseToSystemUserMapper.Map(userRego);
             
         }
-
+        */
 
         public void Create(T entity)
         {

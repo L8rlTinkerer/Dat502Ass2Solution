@@ -55,7 +55,7 @@ namespace Web.API
 
         }
 
-
+        /*
         // POST api/<controller>
         [HttpPost("register")]
         public IActionResult Register([FromBody]RegisterClientDTO userRego)
@@ -77,11 +77,68 @@ namespace Web.API
             _repository.Save();
 
 
-            /*
-            if (userRego.SystemUserType.SystemUserNo == 1 || 2 || 3)
+            return Ok(
+                new RegisterResponseDTO
+                {
+                    Success = true,
+                    Message = "User created successfully",
+                    JWT = null
+                }
+            );
+
+        }
+        */
+
+        // POST api/<controller>
+        [HttpPost("register-client")]
+        public IActionResult RegisterClient([FromBody]RegisterSystemUserDTO userRego)
+        {
+            if (!ModelState.IsValid)
             {
-                
-                var user = _repository.SystemUser.GetRegisteredClientSystemUser(userRego);
+                return new UnprocessableEntityObjectResult(ModelState);
+            }
+
+            var user = _repository.SystemUser.Register(userRego); // checks if user exists already
+
+            if (user == null)
+            {
+                return BadRequest("User already exists");
+            }
+
+            _repository.SystemUser.Create(user);
+
+            _repository.Save();
+
+            var clientDto = new RegisterClientDTO
+            {
+                SystemUserNo = user.SystemUserNo,
+                PreferredAccomodationType = userRego.PreferredAccomodationType,
+                MaximumRent = userRego.MaximumRent,
+                IsActive = userRego.IsActive
+            };
+
+            var client = _repository.Client.RegisterClient(clientDto);
+
+            _repository.Client.Create(client);
+
+            _repository.Save();
+
+            return Ok(
+                new RegisterResponseDTO
+                {
+                    Success = true,
+                    Message = "User created successfully",
+                    JWT = null
+                }
+            );
+
+        }
+
+
+
+
+        /*
+            var user = _repository.SystemUser.GetRegisteredClientSystemUser(userRego);
 
                 if (user == null)
                 {
@@ -102,20 +159,10 @@ namespace Web.API
             }
 
             //RegisterClient(userRego);
-            */
+        */
 
 
-            return Ok(
-                new RegisterResponseDTO
-                {
-                    Success = true,
-                    Message = "User created successfully",
-                    JWT = null
-                }
-            );
-               
 
-        }
 
         /*
         private IActionResult RegisterClient([FromBody]RegisterSystemUserDTO userRego)

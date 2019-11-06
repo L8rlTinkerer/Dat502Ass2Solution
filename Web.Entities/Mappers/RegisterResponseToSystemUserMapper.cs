@@ -9,7 +9,7 @@ namespace Web.Entities.Mappers
 {
     public static class RegisterResponseToSystemUserMapper
     {
-        public static TblSystemUser Map(RegisterDTO dto)
+        public static TblSystemUser Map(RegisterSystemUserDTO dto)
         {
 
             var address = new TblAddress
@@ -30,7 +30,7 @@ namespace Web.Entities.Mappers
                 PhoneNumber = dto.PhoneNumber,
                 AddressNoNavigation = address,
                 AddressNo = address.AddressNo,
-                SystemUserTypeNo = Convert.ToByte(dto.SystemUserType) 
+                SystemUserTypeNo = Convert.ToByte(4)//Convert.ToByte(dto.SystemUserTypeNo)  
             };
             
         }
