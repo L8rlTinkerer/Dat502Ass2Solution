@@ -7,18 +7,13 @@ using Web.Entities.Models;
 
 namespace Web.Entities.DataTransferObjects
 {
-    public class RegisterClientDTO : RegisterBaseUserDTO
+    public class RegisterOwnerDTO : RegisterBaseUserDTO
     {
-        
+        [Required(ErrorMessage = "Please select a owner type.")]
+        public byte OwnerTypeNo { get; set; }
 
-        [MaxLength(100, ErrorMessage = "PreferredAccomodationType notes can be no more than 100 characters.")]
-        public string PreferredAccomodationType { get; set; }
-
-        [Required(ErrorMessage = "Please add your Maximum Rent")]
-        public int MaximumRent { get; set; }
-
-        [Required(ErrorMessage = "Please indicate if you are looking for a property.")]
-        public bool IsActive { get; set; }
+        [Required(ErrorMessage = "Please select if you are active.")]
+        public bool IsOwnerActive { get; set; }
 
         public override TblSystemUser Map()
         {
@@ -30,13 +25,12 @@ namespace Web.Entities.DataTransferObjects
                 PostCode = AddressNoNavigation.PostCode
             };
 
-            var client = new Collection<TblClient>
+            var owner = new Collection<TblOwner>
             {
-                new TblClient
+                new TblOwner
                 {
-                    PreferredAccomodationType = this.PreferredAccomodationType,
-                    MaximumRent = this.MaximumRent,
-                    IsActive = this.IsActive
+                    OwnerTypeNo = Convert.ToByte(this.OwnerTypeNo),
+                    IsOwnerActive = this.IsOwnerActive
                 }
             };
 
@@ -51,9 +45,10 @@ namespace Web.Entities.DataTransferObjects
                 AddressNoNavigation = address,
                 AddressNo = address.AddressNo,
                 SystemUserTypeNo = Convert.ToByte(SystemUserTypeNo),
-                TblClient = client
+                TblOwner = owner
             };
         }
+
 
     }
 }

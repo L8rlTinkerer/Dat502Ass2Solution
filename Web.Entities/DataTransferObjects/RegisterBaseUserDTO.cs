@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using Web.Entities.Models;
 
 namespace Web.Entities.DataTransferObjects
 {
-    public class RegisterSystemUserDTO
+    public class RegisterBaseUserDTO
     {
         [MaxLength(50, ErrorMessage = "FirstName can be no more than 50 characters.")]
         [Required(ErrorMessage = "Please add a First Name")]
@@ -16,6 +17,7 @@ namespace Web.Entities.DataTransferObjects
         [Required(ErrorMessage = "Please add a Last Name")]
         public string LastName { get; set; }
 
+        [DataType(DataType.Password)]
         [MaxLength(50, ErrorMessage = "UserName can be no more than 50 characters.")]
         [Required(ErrorMessage = "Please add a UserName")]
         public string UserName { get; set; }
@@ -24,17 +26,43 @@ namespace Web.Entities.DataTransferObjects
         [Required(ErrorMessage = "Please add a User assword")]
         public string UserPassword { get; set; }
 
+        [DataType(DataType.PhoneNumber)]
         [MaxLength(10, ErrorMessage = "?")]
         [Required(ErrorMessage = "?")]
         public string PhoneNumber { get; set; }
 
+        
         public AddressDTO AddressNoNavigation { get; set; }
 
+        
         public int SystemUserTypeNo { get; set; }
 
-        
-        public string PreferredAccomodationType { get; set; }
-        public int MaximumRent { get; set; }
-        public bool IsActive { get; set; }
+
+        public virtual TblSystemUser Map()
+        {
+            var address = new TblAddress
+            {
+                StreetNumber = AddressNoNavigation.StreetNumber,
+                StreetOrRoadName = AddressNoNavigation.StreetOrRoadName,
+                CityOrTownName = AddressNoNavigation.CityOrTownName,
+                PostCode = AddressNoNavigation.PostCode
+            };
+
+
+            return new TblSystemUser
+            {
+                FirstName = FirstName,
+                LastName = LastName,
+                UserName = UserName,
+                UserPassword = UserPassword,
+                PhoneNumber = PhoneNumber,
+                AddressNoNavigation = address,
+                AddressNo = address.AddressNo,
+                SystemUserTypeNo = Convert.ToByte(SystemUserTypeNo)  
+            };
+        }
+
+
+
     }
 }

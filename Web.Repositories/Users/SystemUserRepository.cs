@@ -22,7 +22,7 @@ namespace Web.Repositories
                 .ToList();
         }
 
-        public TblSystemUser GetRegisteredClientSystemUser(RegisterSystemUserDTO userRego)
+        public TblSystemUser GetRegisteredClientSystemUser(RegisterBaseUserDTO userRego)
         {
             var user = Dat502Ass2DBContext.TblSystemUser.SingleOrDefault(x => x.UserName == userRego.UserName);
             if (user == null)
@@ -61,7 +61,7 @@ namespace Web.Repositories
         }
 
         
-        public TblSystemUser Register(RegisterSystemUserDTO userRego)
+        public TblSystemUser Register(RegisterBaseUserDTO userRego)
         {
             var user = Dat502Ass2DBContext.TblSystemUser.Any(x => x.UserName == userRego.UserName);
 
@@ -69,7 +69,7 @@ namespace Web.Repositories
         }
         
 
-        public TblSystemUser RegisterClient(RegisterSystemUserDTO userRego)
+        public TblSystemUser RegisterClient(RegisterBaseUserDTO userRego)
         {
             var user = Dat502Ass2DBContext.TblSystemUser.Any(x => x.UserName == userRego.UserName);
 

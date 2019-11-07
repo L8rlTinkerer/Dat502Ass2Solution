@@ -7,18 +7,17 @@ using Web.Entities.Models;
 
 namespace Web.Entities.DataTransferObjects
 {
-    public class RegisterClientDTO : RegisterBaseUserDTO
+    public class RegisterStaffMemberDTO : RegisterBaseUserDTO
     {
-        
+        [Required(ErrorMessage = "Please select a branch.")]
+        public int BranchNo { get; set; }
 
-        [MaxLength(100, ErrorMessage = "PreferredAccomodationType notes can be no more than 100 characters.")]
-        public string PreferredAccomodationType { get; set; }
+        [Required(ErrorMessage = "Please select the gender that the staff member identifies with best.")]
+        public byte GenderNo { get; set; }
 
-        [Required(ErrorMessage = "Please add your Maximum Rent")]
-        public int MaximumRent { get; set; }
+        [Required(ErrorMessage = "Please enter a salary")]
+        public int Salary { get; set; }
 
-        [Required(ErrorMessage = "Please indicate if you are looking for a property.")]
-        public bool IsActive { get; set; }
 
         public override TblSystemUser Map()
         {
@@ -30,13 +29,13 @@ namespace Web.Entities.DataTransferObjects
                 PostCode = AddressNoNavigation.PostCode
             };
 
-            var client = new Collection<TblClient>
+            var assistant = new Collection<TblStaff>
             {
-                new TblClient
+                new TblStaff
                 {
-                    PreferredAccomodationType = this.PreferredAccomodationType,
-                    MaximumRent = this.MaximumRent,
-                    IsActive = this.IsActive
+                    BranchNo = Convert.ToByte(this.BranchNo),
+                    GenderNo = Convert.ToByte(this.GenderNo),
+                    Salary = this.Salary
                 }
             };
 
@@ -51,9 +50,8 @@ namespace Web.Entities.DataTransferObjects
                 AddressNoNavigation = address,
                 AddressNo = address.AddressNo,
                 SystemUserTypeNo = Convert.ToByte(SystemUserTypeNo),
-                TblClient = client
+                TblStaff = assistant
             };
         }
-
     }
 }

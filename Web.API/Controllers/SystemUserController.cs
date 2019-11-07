@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using Web.Contracts;
 using Web.Entities.DataTransferObjects;
+using Web.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,11 +15,13 @@ namespace Web.API
     [Route("api/systemuser")]
     public class SystemUserController : Controller
     {
-        private IRepositoryWrapper _repository;
+        private readonly IRepositoryWrapper _repository;
+        private readonly IUserFactory _userFactory;
 
-        public SystemUserController(IRepositoryWrapper repository)
+        public SystemUserController(IRepositoryWrapper repository, IUserFactory userFactory)
         {
             _repository = repository;
+            _userFactory = userFactory;
         }
 
 
@@ -55,27 +59,29 @@ namespace Web.API
 
         }
 
-        /*
+
+        
         // POST api/<controller>
         [HttpPost("register")]
-        public IActionResult Register([FromBody]RegisterClientDTO userRego)
+        public IActionResult Register([FromBody] string request)
         {
             if (!ModelState.IsValid)
             {
                 return new UnprocessableEntityObjectResult(ModelState);
             }
 
-            var user = _repository.SystemUser.Register(userRego); // checks if user exists already
+            var obj = JObject.Parse(request);
+            int userType = (int)obj["SystemUserTypeNo"];
+
+            var user = _userFactory.CreateUser(userType, request); 
 
             if (user == null)
             {
                 return BadRequest("User already exists");
             }
 
-            _repository.SystemUser.Create(user);
-
+            _repository.UserRepository.CreateUser(user);
             _repository.Save();
-
 
             return Ok(
                 new RegisterResponseDTO
@@ -87,11 +93,15 @@ namespace Web.API
             );
 
         }
-        */
+        
 
+
+
+
+        /*
         // POST api/<controller>
         [HttpPost("register-client")]
-        public IActionResult RegisterClient([FromBody]RegisterSystemUserDTO userRego)
+        public IActionResult RegisterClient([FromBody]RegisterBaseUserDTO userRego)
         {
             if (!ModelState.IsValid)
             {
@@ -134,7 +144,7 @@ namespace Web.API
 
         }
 
-
+        */
 
 
         /*

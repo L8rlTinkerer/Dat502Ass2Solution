@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Web.Contracts;
+using Web.Entities.DataTransferObjects;
 using Web.Entities.Models;
 
 namespace Web.Repositories
@@ -11,6 +12,7 @@ namespace Web.Repositories
         private Dat502Ass2DBContext _repoContext;
         private ISystemUserRepository _systemUser;
         private IClientRepository _client;
+        private IUserRepository<RegisterBaseUserDTO> _userRepository; 
 
         public ISystemUserRepository SystemUser
         {
@@ -26,7 +28,7 @@ namespace Web.Repositories
         }
 
        public IClientRepository Client
-        {
+       {
             get
             {
                 if (_client == null)
@@ -36,7 +38,20 @@ namespace Web.Repositories
 
                 return _client;
             }
-        }
+       }
+
+       public IUserRepository<RegisterBaseUserDTO> UserRepository
+       {
+            get
+            {
+                if (_userRepository == null)
+                {
+                    _userRepository = new UserRepository<RegisterBaseUserDTO>(_repoContext);
+                }
+
+                return _userRepository;
+            }
+       } 
 
         public RepositoryWrapper(Dat502Ass2DBContext dat502Ass2DBContext)
         {

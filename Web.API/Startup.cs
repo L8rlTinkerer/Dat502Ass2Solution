@@ -34,11 +34,7 @@ namespace Web.API
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureRepositoryWrapper();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options => {
-                var resolver = options.SerializerSettings.ContractResolver;
-                if (resolver != null)
-                    (resolver as DefaultContractResolver).NamingStrategy = null;
-            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

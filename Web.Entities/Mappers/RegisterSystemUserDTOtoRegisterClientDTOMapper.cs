@@ -8,14 +8,14 @@ namespace Web.Entities.Mappers
 {
     public static class RegisterSystemUserDTOtoRegisterClientDTOMapper
     {
-        public static RegisterClientDTO Map(RegisterSystemUserDTO dto, TblSystemUser su)
+        public static RegisterClientDTO Map(RegisterBaseUserDTO dto, TblSystemUser su)
         {
             return new RegisterClientDTO
             {
-                SystemUserNo = su.SystemUserNo,
-                PreferredAccomodationType = dto.PreferredAccomodationType,
-                MaximumRent = dto.MaximumRent,
-                IsActive = dto.IsActive
+                //SystemUserNo = su.SystemUserNo,
+                //PreferredAccomodationType = dto.PreferredAccomodationType,
+                //MaximumRent = dto.MaximumRent,
+                //IsActive = dto.IsActive
             };
         }
     }

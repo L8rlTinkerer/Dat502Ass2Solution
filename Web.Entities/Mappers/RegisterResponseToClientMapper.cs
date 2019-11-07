@@ -12,7 +12,7 @@ namespace Web.Entities.Mappers
         {
             return new TblClient
             {
-                SystemUserNo = dto.SystemUserNo,
+                //SystemUserNo = dto.SystemUserNo,
                 PreferredAccomodationType = dto.PreferredAccomodationType,
                 MaximumRent = dto.MaximumRent,
                 IsActive = dto.IsActive

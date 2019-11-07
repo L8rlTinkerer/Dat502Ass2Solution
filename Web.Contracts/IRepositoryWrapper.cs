@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Web.Entities.DataTransferObjects;
 
 namespace Web.Contracts
 {
@@ -8,6 +9,7 @@ namespace Web.Contracts
     {
         ISystemUserRepository SystemUser { get; }
         IClientRepository Client { get; }
+        IUserRepository<RegisterBaseUserDTO> UserRepository { get; }
         void Save();
     }
 }

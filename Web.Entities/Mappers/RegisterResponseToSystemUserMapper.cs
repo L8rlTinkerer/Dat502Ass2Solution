@@ -9,7 +9,7 @@ namespace Web.Entities.Mappers
 {
     public static class RegisterResponseToSystemUserMapper
     {
-        public static TblSystemUser Map(RegisterSystemUserDTO dto)
+        public static TblSystemUser Map(RegisterBaseUserDTO dto)
         {
 
             var address = new TblAddress

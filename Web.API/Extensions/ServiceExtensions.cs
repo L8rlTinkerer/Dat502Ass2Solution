@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Web.Contracts;
 using Web.Repositories;
+using Web.Repositories.Users;
 
 namespace Web.API.Extensions
 {
@@ -34,6 +35,7 @@ namespace Web.API.Extensions
         public static void ConfigureRepositoryWrapper(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+            services.AddScoped<IUserFactory, UserFactory>();
         }
     }
 }
