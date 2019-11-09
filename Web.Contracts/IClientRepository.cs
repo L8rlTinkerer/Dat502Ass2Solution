@@ -10,7 +10,7 @@ namespace Web.Contracts
     {
         IEnumerable<TblClient> GetAllClients();
 
-        TblClient RegisterClient(RegisterClientDTO userRego);
+        
 
     }
 }

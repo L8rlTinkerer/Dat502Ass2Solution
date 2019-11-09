@@ -27,5 +27,8 @@ namespace Web.Repositories
         {
             Dat502Ass2DBContext.TblSystemUser.Add(entity);
         }
+
+
+
     }
 }

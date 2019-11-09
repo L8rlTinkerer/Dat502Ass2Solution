@@ -29,7 +29,7 @@ namespace Web.Entities.DataTransferObjects
                 PostCode = AddressNoNavigation.PostCode
             };
 
-            var assistant = new Collection<TblStaff>
+            var staffMember = new Collection<TblStaff>
             {
                 new TblStaff
                 {
@@ -50,7 +50,7 @@ namespace Web.Entities.DataTransferObjects
                 AddressNoNavigation = address,
                 AddressNo = address.AddressNo,
                 SystemUserTypeNo = Convert.ToByte(SystemUserTypeNo),
-                TblStaff = assistant
+                TblStaff = staffMember
             };
         }
     }

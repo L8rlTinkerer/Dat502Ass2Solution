@@ -9,8 +9,7 @@ namespace Web.Entities.DataTransferObjects
 {
     public class RegisterClientDTO : RegisterBaseUserDTO
     {
-        
-
+        [Required(ErrorMessage = "Please add notes about your Preferred Accomodation Type")]
         [MaxLength(100, ErrorMessage = "PreferredAccomodationType notes can be no more than 100 characters.")]
         public string PreferredAccomodationType { get; set; }
 

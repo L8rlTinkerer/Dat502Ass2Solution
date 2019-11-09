@@ -22,7 +22,7 @@ namespace Web.Repositories
                 .ToList();
         }
 
-        public TblSystemUser GetRegisteredClientSystemUser(RegisterBaseUserDTO userRego)
+        public TblSystemUser GetSystemUser(RegisterBaseUserDTO userRego)
         {
             var user = Dat502Ass2DBContext.TblSystemUser.SingleOrDefault(x => x.UserName == userRego.UserName);
             if (user == null)
@@ -58,22 +58,6 @@ namespace Web.Repositories
             };
 
 
-        }
-
-        
-        public TblSystemUser Register(RegisterBaseUserDTO userRego)
-        {
-            var user = Dat502Ass2DBContext.TblSystemUser.Any(x => x.UserName == userRego.UserName);
-
-            return user ? null : RegisterResponseToSystemUserMapper.Map(userRego);
-        }
-        
-
-        public TblSystemUser RegisterClient(RegisterBaseUserDTO userRego)
-        {
-            var user = Dat502Ass2DBContext.TblSystemUser.Any(x => x.UserName == userRego.UserName);
-
-            return user ? null : RegisterResponseToSystemUserMapper.Map(userRego);
         }
 
        

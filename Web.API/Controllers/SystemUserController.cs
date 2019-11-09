@@ -13,7 +13,8 @@ using Web.Repositories;
 namespace Web.API
 {
     [Route("api/systemuser")]
-    public class SystemUserController : Controller
+    [ApiController]
+    public class SystemUserController : ControllerBase
     {
         private readonly IRepositoryWrapper _repository;
         private readonly IUserFactory _userFactory;
@@ -48,6 +49,7 @@ namespace Web.API
                 return BadRequest();
             }
 
+            
             var response = _repository.SystemUser.Login(userLogin);
 
             if (response.Success)

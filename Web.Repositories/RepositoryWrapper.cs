@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Web.Contracts;
 using Web.Entities.DataTransferObjects;
+using Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs;
+using Web.Entities.DataTransferObjects.PropertyDTOs;
 using Web.Entities.Models;
 
 namespace Web.Repositories
@@ -12,7 +14,10 @@ namespace Web.Repositories
         private Dat502Ass2DBContext _repoContext;
         private ISystemUserRepository _systemUser;
         private IClientRepository _client;
-        private IUserRepository<RegisterBaseUserDTO> _userRepository; 
+        private IPropertyRepository<AddAPropertyDTO> _property;
+        private IUserRepository<RegisterBaseUserDTO> _userRepository;
+        private IClientBranchRegisterRepository<ClientBranchRegisterBaseDTO> _clientBranchRego;
+
 
         public ISystemUserRepository SystemUser
         {
@@ -27,8 +32,8 @@ namespace Web.Repositories
             }
         }
 
-       public IClientRepository Client
-       {
+        public IClientRepository Client
+        {
             get
             {
                 if (_client == null)
@@ -38,10 +43,23 @@ namespace Web.Repositories
 
                 return _client;
             }
-       }
+        }
 
-       public IUserRepository<RegisterBaseUserDTO> UserRepository
-       {
+        public IPropertyRepository<AddAPropertyDTO> Property
+        {
+            get
+            {
+                if (_property == null)
+                {
+                    _property = new PropertyRepository<AddAPropertyDTO>(_repoContext);
+                }
+
+                return _property;
+            }
+        }
+
+        public IUserRepository<RegisterBaseUserDTO> UserRepository
+        {
             get
             {
                 if (_userRepository == null)
@@ -51,7 +69,20 @@ namespace Web.Repositories
 
                 return _userRepository;
             }
-       } 
+        }
+
+        public IClientBranchRegisterRepository<ClientBranchRegisterBaseDTO> ClientBranchRego
+        {
+            get
+            {
+                if (_clientBranchRego == null)
+                {
+                    _clientBranchRego = new ClientBranchRegisterRepository<ClientBranchRegisterBaseDTO>(_repoContext);
+                }
+
+                return _clientBranchRego;
+            }
+        }
 
         public RepositoryWrapper(Dat502Ass2DBContext dat502Ass2DBContext)
         {

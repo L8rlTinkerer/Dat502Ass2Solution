@@ -10,13 +10,10 @@ namespace Web.Contracts
     {
         IEnumerable<TblSystemUser> GetAllSystemUsers();
 
-        TblSystemUser GetRegisteredClientSystemUser(RegisterBaseUserDTO userRego);
+        TblSystemUser GetSystemUser(RegisterBaseUserDTO userRego);
 
         LoginResponseDTO Login(LoginDTO login);
 
-        TblSystemUser Register(RegisterBaseUserDTO userRego);
-
-        TblSystemUser RegisterClient(RegisterBaseUserDTO userRego);
 
         
     }

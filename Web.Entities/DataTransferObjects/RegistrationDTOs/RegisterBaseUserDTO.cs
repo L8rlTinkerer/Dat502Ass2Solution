@@ -34,7 +34,7 @@ namespace Web.Entities.DataTransferObjects
         
         public AddressDTO AddressNoNavigation { get; set; }
 
-        
+        [Required(ErrorMessage = "A SystemUserType needs to be specified.")]
         public int SystemUserTypeNo { get; set; }
 
 
