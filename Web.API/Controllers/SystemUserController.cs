@@ -83,14 +83,28 @@ namespace Web.API
             }
 
             _repository.UserRepository.CreateUser(user);
-            _repository.Save();
+            
+
+            try
+            {
+                _repository.Save();
+            }
+            catch (Exception err)
+            {
+                return Ok(
+                new RegisterResponseDTO
+                    {
+                        Success = false,
+                        Message = "User not created."
+                    }
+                );
+            }
 
             return Ok(
                 new RegisterResponseDTO
                 {
                     Success = true,
-                    Message = "User created successfully",
-                    JWT = null
+                    Message = "User created successfully"
                 }
             );
 

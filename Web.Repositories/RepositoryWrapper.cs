@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Web.Contracts;
 using Web.Entities.DataTransferObjects;
+using Web.Entities.DataTransferObjects.AdvertDTOs;
+using Web.Entities.DataTransferObjects.BranchDTOs;
 using Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs;
 using Web.Entities.DataTransferObjects.PropertyDTOs;
 using Web.Entities.Models;
@@ -17,7 +19,8 @@ namespace Web.Repositories
         private IPropertyRepository<AddAPropertyDTO> _property;
         private IUserRepository<RegisterBaseUserDTO> _userRepository;
         private IClientBranchRegisterRepository<ClientBranchRegisterBaseDTO> _clientBranchRego;
-
+        private IBranchRepository<BranchBaseDTO> _branchRepository;
+        private IAdvertRepository<AdvertBaseDTO> _advertRepository;
 
         public ISystemUserRepository SystemUser
         {
@@ -81,6 +84,32 @@ namespace Web.Repositories
                 }
 
                 return _clientBranchRego;
+            }
+        }
+
+        public IBranchRepository<BranchBaseDTO> BranchRepository
+        {
+            get
+            {
+                if (_branchRepository == null)
+                {
+                    _branchRepository = new BranchRepository<BranchBaseDTO>(_repoContext);
+                }
+
+                return _branchRepository;
+            }
+        }
+
+        public IAdvertRepository<AdvertBaseDTO> AdvertRepository
+        {
+            get
+            {
+                if (_advertRepository == null)
+                {
+                    _advertRepository = new AdvertRepository<AdvertBaseDTO>(_repoContext);
+                }
+
+                return _advertRepository;
             }
         }
 

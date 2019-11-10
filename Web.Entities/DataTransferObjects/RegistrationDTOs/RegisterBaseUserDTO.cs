@@ -26,9 +26,11 @@ namespace Web.Entities.DataTransferObjects
         [Required(ErrorMessage = "Please add a User assword")]
         public string UserPassword { get; set; }
 
+        [Required(ErrorMessage = "A Phone number is required.")]
         [DataType(DataType.PhoneNumber)]
-        [MaxLength(10, ErrorMessage = "?")]
-        [Required(ErrorMessage = "?")]
+        [MaxLength(10, ErrorMessage = "Maximum length it 10 characters.")]
+        //[MinLength(10, ErrorMessage = "Minimum length it 10 characters.")]
+        //[RegularExpression(@"^([0-9]{2}[-][0-9]{7})$", ErrorMessage = "Please enter valid phone no.")]
         public string PhoneNumber { get; set; }
 
         
