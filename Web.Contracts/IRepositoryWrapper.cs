@@ -5,7 +5,9 @@ using Web.Entities.DataTransferObjects;
 using Web.Entities.DataTransferObjects.AdvertDTOs;
 using Web.Entities.DataTransferObjects.BranchDTOs;
 using Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs;
+using Web.Entities.DataTransferObjects.LeaseDTOs;
 using Web.Entities.DataTransferObjects.PropertyDTOs;
+using Web.Entities.DataTransferObjects.ViewingDTOs;
 
 namespace Web.Contracts
 {
@@ -18,6 +20,8 @@ namespace Web.Contracts
         IClientBranchRegisterRepository<ClientBranchRegisterBaseDTO> ClientBranchRego { get; }
         IBranchRepository<BranchBaseDTO> BranchRepository { get; }
         IAdvertRepository<AdvertBaseDTO> AdvertRepository { get; }
+        IViewingRepository<ViewingBaseDTO> ViewingRepository { get; }
+        ILeaseRepository<LeaseBaseDTO> LeaseRepository { get; }
 
         void Save();
     }

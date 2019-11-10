@@ -6,7 +6,9 @@ using Web.Entities.DataTransferObjects;
 using Web.Entities.DataTransferObjects.AdvertDTOs;
 using Web.Entities.DataTransferObjects.BranchDTOs;
 using Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs;
+using Web.Entities.DataTransferObjects.LeaseDTOs;
 using Web.Entities.DataTransferObjects.PropertyDTOs;
+using Web.Entities.DataTransferObjects.ViewingDTOs;
 using Web.Entities.Models;
 
 namespace Web.Repositories
@@ -21,6 +23,9 @@ namespace Web.Repositories
         private IClientBranchRegisterRepository<ClientBranchRegisterBaseDTO> _clientBranchRego;
         private IBranchRepository<BranchBaseDTO> _branchRepository;
         private IAdvertRepository<AdvertBaseDTO> _advertRepository;
+        private IViewingRepository<ViewingBaseDTO> _viewingRepository;
+        private ILeaseRepository<LeaseBaseDTO> _leaseRepository;
+
 
         public ISystemUserRepository SystemUser
         {
@@ -110,6 +115,32 @@ namespace Web.Repositories
                 }
 
                 return _advertRepository;
+            }
+        }
+
+        public IViewingRepository<ViewingBaseDTO> ViewingRepository
+        {
+            get
+            {
+                if (_viewingRepository == null)
+                {
+                    _viewingRepository = new ViewingRepository<ViewingBaseDTO>(_repoContext);
+                }
+
+                return _viewingRepository;
+            }
+        }
+        
+        public ILeaseRepository<LeaseBaseDTO> LeaseRepository
+        {
+            get
+            {
+                if (_leaseRepository == null)
+                {
+                    _leaseRepository = new LeaseRepository<LeaseBaseDTO>(_repoContext);
+                }
+
+                return _leaseRepository;
             }
         }
 

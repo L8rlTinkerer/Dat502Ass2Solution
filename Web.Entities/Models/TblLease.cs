@@ -13,6 +13,7 @@ namespace Web.Entities.Models
         public int DepositAmount { get; set; }
         public bool DepositPaid { get; set; }
         public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public virtual TblClient ClientNoNavigation { get; set; }
         public virtual TblLeaseType LeaseTypeNoNavigation { get; set; }

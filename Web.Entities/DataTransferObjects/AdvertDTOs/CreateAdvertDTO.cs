@@ -6,6 +6,9 @@ namespace Web.Entities.DataTransferObjects.AdvertDTOs
     public class CreateAdvertDTO : AdvertBaseDTO
     {
         public int PropertyNo { get; set; }
+
+        public DateTime DateAdvertised { get; set; }
+
         public string NewsPaperName { get; set; }
 
 
@@ -14,7 +17,7 @@ namespace Web.Entities.DataTransferObjects.AdvertDTOs
             return new TblAdvert()
             {
                 PropertyNo = PropertyNo,
-                DateAdvertised = DateTime.UtcNow,
+                DateAdvertised = DateAdvertised,
                 NewsPaperName = NewsPaperName
             };
         }

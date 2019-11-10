@@ -135,7 +135,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblGender>(entity =>
             {
                 entity.HasKey(e => e.GenderNo)
-                    .HasName("PK__tbl_Gend__4E264A2041D9E842");
+                    .HasName("PK__tbl_Gend__4E264A20EB1F6CB2");
 
                 entity.ToTable("tbl_Gender");
 
@@ -151,6 +151,8 @@ namespace Web.Entities.Models
                     .HasName("PK_Lease");
 
                 entity.ToTable("tbl_Lease");
+
+                entity.Property(e => e.EndDate).HasColumnType("date");
 
                 entity.Property(e => e.StartDate).HasColumnType("date");
 
@@ -182,7 +184,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblLeaseType>(entity =>
             {
                 entity.HasKey(e => e.LeaseTypeNo)
-                    .HasName("PK__tbl_Leas__F4D24D5E3E5F3A9A");
+                    .HasName("PK__tbl_Leas__F4D24D5EFA610A56");
 
                 entity.ToTable("tbl_LeaseType");
 
@@ -215,7 +217,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblOwnerType>(entity =>
             {
                 entity.HasKey(e => e.OwnerTypeNo)
-                    .HasName("PK__tbl_Owne__CA4B541A5F0B3F05");
+                    .HasName("PK__tbl_Owne__CA4B541A49B2FD6B");
 
                 entity.ToTable("tbl_OwnerType");
 
@@ -233,7 +235,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblPaymentMethod>(entity =>
             {
                 entity.HasKey(e => e.PaymentMethodNo)
-                    .HasName("PK__tbl_Paym__DC326B790762B5D0");
+                    .HasName("PK__tbl_Paym__DC326B79F0237101");
 
                 entity.ToTable("tbl_PaymentMethod");
 
@@ -289,7 +291,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblPropertyType>(entity =>
             {
                 entity.HasKey(e => e.PropertyTypeNo)
-                    .HasName("PK__tbl_Prop__BDE174D7499F7F36");
+                    .HasName("PK__tbl_Prop__BDE174D7C51DF608");
 
                 entity.ToTable("tbl_PropertyType");
 
@@ -406,7 +408,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblSystemUserType>(entity =>
             {
                 entity.HasKey(e => e.SystemUserTypeNo)
-                    .HasName("PK__tbl_Syst__73D7BBFD444A9694");
+                    .HasName("PK__tbl_Syst__73D7BBFD8E0BFE3E");
 
                 entity.ToTable("tbl_SystemUserType");
 

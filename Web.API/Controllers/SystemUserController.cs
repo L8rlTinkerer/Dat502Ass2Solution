@@ -89,7 +89,7 @@ namespace Web.API
             {
                 _repository.Save();
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 return Ok(
                 new RegisterResponseDTO
