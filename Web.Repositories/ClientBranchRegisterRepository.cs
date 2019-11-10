@@ -5,6 +5,8 @@ using System.Linq;
 using Web.Contracts;
 using Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs;
 using Web.Entities.Models;
+using Web.Entities.DataTransferObjects.ClientPropertiesDTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web.Repositories
 {
@@ -29,6 +31,15 @@ namespace Web.Repositories
         {
             Dat502Ass2DBContext.TblRegistration.Add(entity);
         }
+
+        public IEnumerable<TblRegistration> GetAllRegistrationsForOneClient<U>(U entity) where U: ClientPropertiesDTO
+        {
+            var registrations = Dat502Ass2DBContext.TblRegistration.FromSql($"select * from tbl_Registrations where ClientNo = {entity.ClientNo}").ToArray();
+
+            return registrations;
+
+        }
+
 
         public IEnumerable<TblRegistration> GetAllRegistrations()
         {

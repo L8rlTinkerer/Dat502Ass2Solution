@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Web.Contracts;
+using Web.Entities.DataTransferObjects.ClientPropertiesDTOs;
 using Web.Entities.DataTransferObjects.PropertyDTOs;
+using Web.Entities.Models;
 
 namespace Web.API.Controllers
 {
@@ -23,8 +25,20 @@ namespace Web.API.Controllers
         }
 
 
+        //[HttpGet("/client-properties/{id}", Name = "Client-properties")]
+        //public string GetClientProperties([FromBody] ClientPropertiesDTO clientPropertiesDTO)
+        //{
+        //    var regos = _repository.ClientBranchRego.GetAllRegistrationsForOneClient(clientPropertiesDTO);
 
-        
+        //    foreach (TblRegistration rego in regos)
+        //    {
+
+        //    }
+        //    //var properties = 
+
+        //    return "value";
+        //}
+
 
         // POST: api/Property
         [HttpPost("addproperty")]

@@ -1,28 +1,22 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Web.Contracts;
-using Web.Entities.DataTransferObjects;
-using Web.Entities.Models;
 
-namespace Web.Repositories.Users
+namespace Web.Repositories.Dashboards
 {
-
-    public class UserFactory : IUserFactory
+    public class DashboardFactory
     {
-
         private readonly IRepositoryWrapper _repo;
 
-        public UserFactory(IRepositoryWrapper repo)
+        public DashboardFactory(IRepositoryWrapper repo)
         {
             _repo = repo;
         }
 
-        /*
         public TblSystemUser CreateUser(int userType, string jsonRequest)
         {
-            
+
             switch (userType)
             {
                 case 1:
@@ -54,7 +48,9 @@ namespace Web.Repositories.Users
 
             return null;
         }
-        */
+
+
+
 
 
     }
