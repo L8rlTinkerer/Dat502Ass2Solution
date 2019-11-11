@@ -11,8 +11,11 @@ namespace Web.Repositories
 {
     public class SystemUserRepository : RepositoryBase<TblSystemUser>, ISystemUserRepository
     {
+        private readonly Dat502Ass2DBContext _dat502Ass2DBContext;
+
         public SystemUserRepository(Dat502Ass2DBContext dat502Ass2DBContext) : base(dat502Ass2DBContext)
         {
+            _dat502Ass2DBContext = dat502Ass2DBContext;
         }
 
         public IEnumerable<TblSystemUser> GetAllSystemUsers()
@@ -56,10 +59,15 @@ namespace Web.Repositories
                 Success = false,
                 Message = "Incorrect password"
             };
-
-
         }
 
-       
+        public int GetUserType(int userId)
+        {
+            var user = _dat502Ass2DBContext.TblSystemUser.FirstOrDefault(x => x.SystemUserNo == userId);
+
+            return user.SystemUserTypeNo;
+        }
+
+
     }
 }

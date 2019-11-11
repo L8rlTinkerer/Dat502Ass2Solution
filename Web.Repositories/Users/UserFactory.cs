@@ -19,7 +19,7 @@ namespace Web.Repositories.Users
             _repo = repo;
         }
 
-        /*
+        
         public TblSystemUser CreateUser(int userType, string jsonRequest)
         {
             
@@ -54,7 +54,7 @@ namespace Web.Repositories.Users
 
             return null;
         }
-        */
+        
 
 
     }

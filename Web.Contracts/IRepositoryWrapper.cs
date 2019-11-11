@@ -22,6 +22,7 @@ namespace Web.Contracts
         IAdvertRepository<AdvertBaseDTO> AdvertRepository { get; }
         IViewingRepository<ViewingBaseDTO> ViewingRepository { get; }
         ILeaseRepository<LeaseBaseDTO> LeaseRepository { get; }
+        IDashboardRepository DashboardRepository { get; }
 
         void Save();
     }

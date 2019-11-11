@@ -4,62 +4,43 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Web.Contracts;
 
 namespace Web.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/dashboard")]
     [ApiController]
     public class DashboardController : ControllerBase
     {
+        private readonly IRepositoryWrapper _repository;
 
-        /*
-        // GET: api/Dashboard/5
-        [HttpGet("{id}", Name = "Get")]
-        public IActionResult Get(int id)
+        public DashboardController(IRepositoryWrapper repository)
         {
-            if (!ModelState.IsValid)
-            {
-                return new UnprocessableEntityObjectResult(ModelState);
-            }
-
-            var obj = JObject.Parse(request);
-            int userType = (int)obj["SystemUserTypeNo"];
-
-            var user = _userFactory.CreateUser(userType, request);
-
-            if (user == null)
-            {
-                return BadRequest("User already exists");
-            }
-
-            _repository.UserRepository.CreateUser(user);
-
-
-            try
-            {
-                _repository.Save();
-            }
-            catch (Exception)
-            {
-                return Ok(
-                new RegisterResponseDTO
-                {
-                    Success = false,
-                    Message = "User not created."
-                }
-                );
-            }
-
-            return Ok(
-                new RegisterResponseDTO
-                {
-                    Success = true,
-                    Message = "User created successfully"
-                }
-            );
+            _repository = repository;
         }
-        */
 
-       
+        [HttpGet("{userId}")]
+        public IActionResult Get(int userId)
+        {
+            // TODO: Check the user exists
+
+            // get the user type
+            var userType = _repository.SystemUser.GetUserType(userId);
+
+            // Based of user type get the correct dashboard
+            switch (userType)
+            {
+                case 4:
+                    {
+                        var dashboard = _repository.DashboardRepository.GetClientDashboard(userId);
+                        // TODO: check dashboard isn't empty ore null'
+                        return Ok(dashboard);
+                    }
+            }
+
+            return BadRequest();
+        }
+
+
     }
 }

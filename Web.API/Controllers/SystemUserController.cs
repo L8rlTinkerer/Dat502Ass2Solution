@@ -109,119 +109,12 @@ namespace Web.API
             );
 
         }
+
+
+
         
 
 
-
-
-        /*
-        // POST api/<controller>
-        [HttpPost("register-client")]
-        public IActionResult RegisterClient([FromBody]RegisterBaseUserDTO userRego)
-        {
-            if (!ModelState.IsValid)
-            {
-                return new UnprocessableEntityObjectResult(ModelState);
-            }
-
-            var user = _repository.SystemUser.Register(userRego); // checks if user exists already
-
-            if (user == null)
-            {
-                return BadRequest("User already exists");
-            }
-
-            _repository.SystemUser.Create(user);
-
-            _repository.Save();
-
-            var clientDto = new RegisterClientDTO
-            {
-                SystemUserNo = user.SystemUserNo,
-                PreferredAccomodationType = userRego.PreferredAccomodationType,
-                MaximumRent = userRego.MaximumRent,
-                IsActive = userRego.IsActive
-            };
-
-            var client = _repository.Client.RegisterClient(clientDto);
-
-            _repository.Client.Create(client);
-
-            _repository.Save();
-
-            return Ok(
-                new RegisterResponseDTO
-                {
-                    Success = true,
-                    Message = "User created successfully",
-                    JWT = null
-                }
-            );
-
-        }
-
-        */
-
-
-        /*
-            var user = _repository.SystemUser.GetRegisteredClientSystemUser(userRego);
-
-                if (user == null)
-                {
-                    return BadRequest("User does not exist");
-                }
-
-                var client = _repository.Client.RegisterClient(userRego);
-
-                if (client == null)
-                {
-                    return BadRequest("Client already exists");
-                }
-
-                _repository.Client.Create(client);
-
-                _repository.Save();
-                
-            }
-
-            //RegisterClient(userRego);
-        */
-
-
-
-
-        /*
-        private IActionResult RegisterClient([FromBody]RegisterSystemUserDTO userRego)
-        {
-            var user = _repository.SystemUser.GetRegisteredClientSystemUser(userRego);
-
-            if (user == null)
-            {
-                return BadRequest("User does not exist");
-            }
-
-            var client = _repository.Client.RegisterClient(userRego);
-
-            if (client == null)
-            {
-                return BadRequest("Client already exists");
-            }
-
-            _repository.Client.Create(client);
-
-            _repository.Save();
-
-            return Ok(
-                new RegisterResponseDTO
-                {
-                    Success = true,
-                    Message = "Client created successfully",
-                    JWT = null
-                }
-            );
-            
-        }
-        */
 
         /*
         // GET: api/<controller>

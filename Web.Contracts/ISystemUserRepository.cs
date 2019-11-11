@@ -14,8 +14,8 @@ namespace Web.Contracts
 
         LoginResponseDTO Login(LoginDTO login);
 
+        int GetUserType(int userId);
 
-        
     }
 
 

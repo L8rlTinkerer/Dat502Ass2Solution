@@ -6,10 +6,12 @@ using Web.Entities.DataTransferObjects;
 using Web.Entities.DataTransferObjects.AdvertDTOs;
 using Web.Entities.DataTransferObjects.BranchDTOs;
 using Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs;
+using Web.Entities.DataTransferObjects.DashboardDTOs;
 using Web.Entities.DataTransferObjects.LeaseDTOs;
 using Web.Entities.DataTransferObjects.PropertyDTOs;
 using Web.Entities.DataTransferObjects.ViewingDTOs;
 using Web.Entities.Models;
+using Web.Repositories.Users;
 
 namespace Web.Repositories
 {
@@ -25,6 +27,7 @@ namespace Web.Repositories
         private IAdvertRepository<AdvertBaseDTO> _advertRepository;
         private IViewingRepository<ViewingBaseDTO> _viewingRepository;
         private ILeaseRepository<LeaseBaseDTO> _leaseRepository;
+        private IDashboardRepository _dashboardRepository;
 
 
         public ISystemUserRepository SystemUser
@@ -141,6 +144,19 @@ namespace Web.Repositories
                 }
 
                 return _leaseRepository;
+            }
+        }
+
+        public IDashboardRepository DashboardRepository
+        {
+            get
+            {
+                if (_dashboardRepository == null)
+                {
+                    _dashboardRepository = new DashboardRepository(_repoContext);
+                }
+
+                return _dashboardRepository;
             }
         }
 

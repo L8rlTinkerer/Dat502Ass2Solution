@@ -14,6 +14,7 @@ namespace Web.Repositories.Dashboards
             _repo = repo;
         }
 
+        /*
         public TblSystemUser CreateUser(int userType, string jsonRequest)
         {
 
@@ -48,7 +49,7 @@ namespace Web.Repositories.Dashboards
 
             return null;
         }
-
+        */
 
 
 

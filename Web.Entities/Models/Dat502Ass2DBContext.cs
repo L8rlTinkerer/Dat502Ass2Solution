@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Web.Entities.DataTransferObjects.DashboardDTOs;
 
 namespace Web.Entities.Models
 {
@@ -32,6 +33,8 @@ namespace Web.Entities.Models
         public virtual DbSet<TblSystemUser> TblSystemUser { get; set; }
         public virtual DbSet<TblSystemUserType> TblSystemUserType { get; set; }
         public virtual DbSet<TblViewing> TblViewing { get; set; }
+
+        public virtual DbQuery<ClientDashboardDTO> ClientDashboard { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
