@@ -35,7 +35,47 @@ namespace Web.API.Controllers
             }
 
             var obj = JObject.Parse(request);
-            var newRego = JsonConvert.DeserializeObject<AddClientBranchRegisterDTO>(request);
+            var newRequest = JsonConvert.DeserializeObject<InitalRequestToAddCBRDTO>(request);
+
+            // check staff memeber is registered with the company (is a system user)
+            var staffSystemUser = _repository.SystemUser.GetSystemUserById(newRequest.StaffSystemUserNo);
+            if (staffSystemUser == null)
+            {
+                return BadRequest("staffSystemUser does not exist");
+            }
+
+
+            // retrieve staffNo
+            var staff = _repository.StaffRepository.GetStaffNo(newRequest.StaffSystemUserNo);
+            if (staff == null)
+            {
+                return BadRequest("staffSystemUser does not exist");
+            }
+
+
+            // check branchNo
+            var branch = _repository.BranchRepository.CheckBranchNo(newRequest.BranchNo);
+            if (branch == null)
+            {
+                return BadRequest("Branch does not exist");
+            }
+
+            // check client is registered with the company (is a system user)
+            var clientSystemUser = _repository.SystemUser.GetUserByUserNameAndUserType(newRequest.ClientSystemUserName);
+            if (clientSystemUser == null)
+            {
+                return BadRequest("clientSystemUser does not exist");
+            }
+
+
+            // check client exists and retrieve clientNo
+            var client = _repository.ClientRepository.GetClientNo(clientSystemUser.SystemUserNo);
+            if (client == null)
+            {
+                return BadRequest("Client does not exist");
+            }
+
+            AddClientBranchRegisterDTO newRego = _repository.ClientBranchRego.AddNewCBR(staff, client, branch);            
 
             var rego = _repository.ClientBranchRego.AddRegistration(newRego);
 

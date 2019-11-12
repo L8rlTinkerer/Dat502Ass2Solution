@@ -7,14 +7,18 @@ using Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs;
 using Web.Entities.Models;
 using Web.Entities.DataTransferObjects.ClientPropertiesDTOs;
 using Microsoft.EntityFrameworkCore;
+using Web.Entities.DataTransferObjects.BranchRegistrationDTOs;
 
 namespace Web.Repositories
 {
     public class ClientBranchRegisterRepository<T> : RepositoryBase<T>, IClientBranchRegisterRepository<T> where T : ClientBranchRegisterBaseDTO
     {
+
+        private readonly Dat502Ass2DBContext _dat502Ass2DBContext;
+
         public ClientBranchRegisterRepository(Dat502Ass2DBContext dat502Ass2DBContext) : base(dat502Ass2DBContext)
         {
-
+            _dat502Ass2DBContext = dat502Ass2DBContext;
         }
 
         public TblRegistration AddRegistration<U>(U entity) where U: AddClientBranchRegisterDTO
@@ -45,5 +49,18 @@ namespace Web.Repositories
         {
             throw new NotImplementedException();
         }
+
+
+        public AddClientBranchRegisterDTO AddNewCBR(TblStaff staff, TblClient client, TblBranch branch)
+        {
+            // create AddClientBranchRegisterDTO
+            return new AddClientBranchRegisterDTO
+            {
+                StaffNo = staff.StaffNo,
+                BranchNo = branch.BranchNo,
+                ClientNo = client.ClientNo
+            };
+        }
+
     }
 }

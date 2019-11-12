@@ -15,7 +15,7 @@ namespace Web.Contracts
     {
         IPropertyRepository<AddAPropertyDTO> Property { get; }
         ISystemUserRepository SystemUser { get; }
-        IClientRepository Client { get; }
+        IClientRepository ClientRepository { get; }
         IUserRepository<RegisterBaseUserDTO> UserRepository { get; }
         IClientBranchRegisterRepository<ClientBranchRegisterBaseDTO> ClientBranchRego { get; }
         IBranchRepository<BranchBaseDTO> BranchRepository { get; }
@@ -23,7 +23,8 @@ namespace Web.Contracts
         IViewingRepository<ViewingBaseDTO> ViewingRepository { get; }
         ILeaseRepository<LeaseBaseDTO> LeaseRepository { get; }
         IDashboardRepository DashboardRepository { get; }
+        IStaffRepository StaffRepository { get; }
 
-        void Save();
+    void Save();
     }
 }

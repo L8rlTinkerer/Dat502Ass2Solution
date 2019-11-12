@@ -28,6 +28,7 @@ namespace Web.Repositories
         private IViewingRepository<ViewingBaseDTO> _viewingRepository;
         private ILeaseRepository<LeaseBaseDTO> _leaseRepository;
         private IDashboardRepository _dashboardRepository;
+        private IStaffRepository _staffRepository;
 
 
         public ISystemUserRepository SystemUser
@@ -43,7 +44,7 @@ namespace Web.Repositories
             }
         }
 
-        public IClientRepository Client
+        public IClientRepository ClientRepository
         {
             get
             {
@@ -159,6 +160,27 @@ namespace Web.Repositories
                 return _dashboardRepository;
             }
         }
+        
+        public IStaffRepository StaffRepository
+        {
+            get
+            {
+                if (_staffRepository == null)
+                {
+                    _staffRepository = new StaffRepository(_repoContext);
+                }
+
+                return _staffRepository;
+            }
+        }
+
+
+
+
+
+
+
+
 
         public RepositoryWrapper(Dat502Ass2DBContext dat502Ass2DBContext)
         {

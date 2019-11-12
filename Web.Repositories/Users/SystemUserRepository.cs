@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Web.Contracts;
 using Web.Entities.DataTransferObjects;
+using Web.Entities.DataTransferObjects.BranchRegistrationDTOs;
+using Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs;
 using Web.Entities.Mappers;
 using Web.Entities.Models;
 
@@ -32,7 +34,18 @@ namespace Web.Repositories
             {
                 return null;
             }
-            return null;
+            return user;
+        }
+
+
+        public TblSystemUser GetSystemUserById(int userId)
+        {
+            var user = Dat502Ass2DBContext.TblSystemUser.SingleOrDefault(x => x.SystemUserNo == userId);
+            if (user == null)
+            {
+                return null;
+            }
+            return user;
         }
 
         public LoginResponseDTO Login(LoginDTO login)
@@ -50,7 +63,9 @@ namespace Web.Repositories
             {
                 return new LoginResponseDTO
                 {
-                    Success = true
+                    Success = true,
+                    UserId = user.SystemUserNo,
+                    UserType = user.SystemUserTypeNo
                 };
             }
             
@@ -68,6 +83,18 @@ namespace Web.Repositories
             return user.SystemUserTypeNo;
         }
 
+        public TblSystemUser GetUserByUserNameAndUserType(string userName)
+        {
+            var user = _dat502Ass2DBContext.TblSystemUser.FirstOrDefault(x =>
+                                                                        x.UserName == userName &&
+                                                                        x.SystemUserTypeNo == 4
+                                                                        );
+            if (user == null)
+            {
+                return null;
+            }
+            return user;
+        }
 
     }
 }

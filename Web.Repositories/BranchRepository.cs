@@ -11,9 +11,11 @@ namespace Web.Repositories
 {
     public class BranchRepository<T> : RepositoryBase<T>, IBranchRepository<T> where T : BranchBaseDTO
     {
+        private readonly Dat502Ass2DBContext _dat502Ass2DBContext;
+
         public BranchRepository(Dat502Ass2DBContext dat502Ass2DBContext) : base(dat502Ass2DBContext)
         {
-   
+            _dat502Ass2DBContext = dat502Ass2DBContext;
         }
 
         public bool ConfirmManager<U>(U entity) where U : AddBranchDTO
@@ -67,5 +69,21 @@ namespace Web.Repositories
         {
             throw new NotImplementedException();
         }
+
+
+        public TblBranch CheckBranchNo(int branchId)
+        {
+            var branch = _dat502Ass2DBContext.TblBranch.FirstOrDefault(x => x.BranchNo == branchId);
+
+            if (branch == null)
+            {
+                return null;
+            }
+
+            return branch;
+        }
+
+
+
     }
 }

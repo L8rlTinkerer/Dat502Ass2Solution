@@ -16,6 +16,10 @@ namespace Web.Contracts
 
         int GetUserType(int userId);
 
+        TblSystemUser GetUserByUserNameAndUserType(string userName);
+
+        TblSystemUser GetSystemUserById(int userId);
+
     }
 
 

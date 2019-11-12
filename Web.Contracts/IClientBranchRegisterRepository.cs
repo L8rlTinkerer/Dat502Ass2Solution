@@ -16,5 +16,6 @@ namespace Web.Contracts
         TblRegistration AddRegistration<U>(U entity) where U : AddClientBranchRegisterDTO;
         void CreateRegistration<U>(U entity) where U : TblRegistration;
 
+        AddClientBranchRegisterDTO AddNewCBR(TblStaff staff, TblClient client, TblBranch branch);
     }
 }

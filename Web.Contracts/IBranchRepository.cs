@@ -13,5 +13,7 @@ namespace Web.Contracts
         bool ConfirmManager<U>(U entity) where U : AddBranchDTO;
         TblBranch AddBranch<U>(U entity) where U : AddBranchDTO;
         void CreateBranch<U>(U entity) where U : TblBranch;
+
+        TblBranch CheckBranchNo(int branchId);
     }
 }
