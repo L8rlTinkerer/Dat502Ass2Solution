@@ -94,7 +94,7 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblAdvert)
                     .HasForeignKey(d => d.PropertyNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Adver__Prope__628FA481");
+                    .HasConstraintName("FK__tbl_Adver__Prope__4F7CD00D");
             });
 
             modelBuilder.Entity<TblBranch>(entity =>
@@ -113,7 +113,7 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblBranch)
                     .HasForeignKey(d => d.AddressNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Branc__Addre__44FF419A");
+                    .HasConstraintName("FK__tbl_Branc__Addre__31EC6D26");
             });
 
             modelBuilder.Entity<TblClient>(entity =>
@@ -132,13 +132,13 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblClient)
                     .HasForeignKey(d => d.SystemUserNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Clien__Syste__5070F446");
+                    .HasConstraintName("FK__tbl_Clien__Syste__3D5E1FD2");
             });
 
             modelBuilder.Entity<TblGender>(entity =>
             {
                 entity.HasKey(e => e.GenderNo)
-                    .HasName("PK__tbl_Gend__4E264A20EB1F6CB2");
+                    .HasName("PK__tbl_Gend__4E264A20F2ED68B5");
 
                 entity.ToTable("tbl_Gender");
 
@@ -163,31 +163,31 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblLease)
                     .HasForeignKey(d => d.ClientNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Lease__Clien__66603565");
+                    .HasConstraintName("FK__tbl_Lease__Clien__534D60F1");
 
                 entity.HasOne(d => d.LeaseTypeNoNavigation)
                     .WithMany(p => p.TblLease)
                     .HasForeignKey(d => d.LeaseTypeNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Lease__Lease__6754599E");
+                    .HasConstraintName("FK__tbl_Lease__Lease__5441852A");
 
                 entity.HasOne(d => d.PaymentMethodNoNavigation)
                     .WithMany(p => p.TblLease)
                     .HasForeignKey(d => d.PaymentMethodNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Lease__Payme__68487DD7");
+                    .HasConstraintName("FK__tbl_Lease__Payme__5535A963");
 
                 entity.HasOne(d => d.PropertyNoNavigation)
                     .WithMany(p => p.TblLease)
                     .HasForeignKey(d => d.PropertyNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Lease__Prope__656C112C");
+                    .HasConstraintName("FK__tbl_Lease__Prope__52593CB8");
             });
 
             modelBuilder.Entity<TblLeaseType>(entity =>
             {
                 entity.HasKey(e => e.LeaseTypeNo)
-                    .HasName("PK__tbl_Leas__F4D24D5EFA610A56");
+                    .HasName("PK__tbl_Leas__F4D24D5E152D99F1");
 
                 entity.ToTable("tbl_LeaseType");
 
@@ -208,19 +208,19 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblOwner)
                     .HasForeignKey(d => d.OwnerTypeNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Owner__Owner__5812160E");
+                    .HasConstraintName("FK__tbl_Owner__Owner__44FF419A");
 
                 entity.HasOne(d => d.SystemUserNoNavigation)
                     .WithMany(p => p.TblOwner)
                     .HasForeignKey(d => d.SystemUserNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Owner__Syste__59063A47");
+                    .HasConstraintName("FK__tbl_Owner__Syste__45F365D3");
             });
 
             modelBuilder.Entity<TblOwnerType>(entity =>
             {
                 entity.HasKey(e => e.OwnerTypeNo)
-                    .HasName("PK__tbl_Owne__CA4B541A49B2FD6B");
+                    .HasName("PK__tbl_Owne__CA4B541A844E2069");
 
                 entity.ToTable("tbl_OwnerType");
 
@@ -238,7 +238,7 @@ namespace Web.Entities.Models
             modelBuilder.Entity<TblPaymentMethod>(entity =>
             {
                 entity.HasKey(e => e.PaymentMethodNo)
-                    .HasName("PK__tbl_Paym__DC326B79F0237101");
+                    .HasName("PK__tbl_Paym__DC326B798D2CED46");
 
                 entity.ToTable("tbl_PaymentMethod");
 
@@ -264,37 +264,37 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblProperty)
                     .HasForeignKey(d => d.AddressNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Prope__Addre__5DCAEF64");
+                    .HasConstraintName("FK__tbl_Prope__Addre__4AB81AF0");
 
                 entity.HasOne(d => d.BranchNoNavigation)
                     .WithMany(p => p.TblProperty)
                     .HasForeignKey(d => d.BranchNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Prope__Branc__5CD6CB2B");
+                    .HasConstraintName("FK__tbl_Prope__Branc__49C3F6B7");
 
                 entity.HasOne(d => d.OwnerNoNavigation)
                     .WithMany(p => p.TblProperty)
                     .HasForeignKey(d => d.OwnerNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Prope__Owner__5BE2A6F2");
+                    .HasConstraintName("FK__tbl_Prope__Owner__48CFD27E");
 
                 entity.HasOne(d => d.PropertyTypeNoNavigation)
                     .WithMany(p => p.TblProperty)
                     .HasForeignKey(d => d.PropertyTypeNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Prope__Prope__5EBF139D");
+                    .HasConstraintName("FK__tbl_Prope__Prope__4BAC3F29");
 
                 entity.HasOne(d => d.StaffNoNavigation)
                     .WithMany(p => p.TblProperty)
                     .HasForeignKey(d => d.StaffNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Prope__Staff__5FB337D6");
+                    .HasConstraintName("FK__tbl_Prope__Staff__4CA06362");
             });
 
             modelBuilder.Entity<TblPropertyType>(entity =>
             {
                 entity.HasKey(e => e.PropertyTypeNo)
-                    .HasName("PK__tbl_Prop__BDE174D7C51DF608");
+                    .HasName("PK__tbl_Prop__BDE174D704690285");
 
                 entity.ToTable("tbl_PropertyType");
 
@@ -322,19 +322,19 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblRegistration)
                     .HasForeignKey(d => d.BranchNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Regis__Branc__5441852A");
+                    .HasConstraintName("FK__tbl_Regis__Branc__412EB0B6");
 
                 entity.HasOne(d => d.ClientNoNavigation)
                     .WithMany(p => p.TblRegistration)
                     .HasForeignKey(d => d.ClientNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Regis__Clien__5535A963");
+                    .HasConstraintName("FK__tbl_Regis__Clien__4222D4EF");
 
                 entity.HasOne(d => d.StaffNoNavigation)
                     .WithMany(p => p.TblRegistration)
                     .HasForeignKey(d => d.StaffNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Regis__Staff__534D60F1");
+                    .HasConstraintName("FK__tbl_Regis__Staff__403A8C7D");
             });
 
             modelBuilder.Entity<TblStaff>(entity =>
@@ -348,19 +348,19 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblStaff)
                     .HasForeignKey(d => d.BranchNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Staff__Branc__4BAC3F29");
+                    .HasConstraintName("FK__tbl_Staff__Branc__38996AB5");
 
                 entity.HasOne(d => d.GenderNoNavigation)
                     .WithMany(p => p.TblStaff)
                     .HasForeignKey(d => d.GenderNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Staff__Gende__4D94879B");
+                    .HasConstraintName("FK__tbl_Staff__Gende__3A81B327");
 
                 entity.HasOne(d => d.SystemUserNoNavigation)
                     .WithMany(p => p.TblStaff)
                     .HasForeignKey(d => d.SystemUserNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Staff__Syste__4CA06362");
+                    .HasConstraintName("FK__tbl_Staff__Syste__398D8EEE");
             });
 
             modelBuilder.Entity<TblSystemUser>(entity =>
@@ -399,19 +399,19 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblSystemUser)
                     .HasForeignKey(d => d.AddressNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Syste__Addre__48CFD27E");
+                    .HasConstraintName("FK__tbl_Syste__Addre__35BCFE0A");
 
                 entity.HasOne(d => d.SystemUserTypeNoNavigation)
                     .WithMany(p => p.TblSystemUser)
                     .HasForeignKey(d => d.SystemUserTypeNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Syste__Syste__47DBAE45");
+                    .HasConstraintName("FK__tbl_Syste__Syste__34C8D9D1");
             });
 
             modelBuilder.Entity<TblSystemUserType>(entity =>
             {
                 entity.HasKey(e => e.SystemUserTypeNo)
-                    .HasName("PK__tbl_Syst__73D7BBFD8E0BFE3E");
+                    .HasName("PK__tbl_Syst__73D7BBFD81BD526B");
 
                 entity.ToTable("tbl_SystemUserType");
 
@@ -444,13 +444,13 @@ namespace Web.Entities.Models
                     .WithMany(p => p.TblViewing)
                     .HasForeignKey(d => d.ClientNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Viewi__Clien__6C190EBB");
+                    .HasConstraintName("FK__tbl_Viewi__Clien__59063A47");
 
                 entity.HasOne(d => d.PropertyNoNavigation)
                     .WithMany(p => p.TblViewing)
                     .HasForeignKey(d => d.PropertyNo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tbl_Viewi__Prope__6B24EA82");
+                    .HasConstraintName("FK__tbl_Viewi__Prope__5812160E");
             });
         }
     }

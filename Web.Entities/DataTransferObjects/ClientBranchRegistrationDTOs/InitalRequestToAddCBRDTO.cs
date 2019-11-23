@@ -10,10 +10,10 @@ namespace Web.Entities.DataTransferObjects.ClientBranchRegistrationDTOs
     {
 
         [Required(ErrorMessage = "An StaffSystemUserNo is required.")]
-        public int StaffSystemUserNo { get; set; }
+        public int SystemUserNo { get; set; }
 
         [Required(ErrorMessage = "An ClientSystemUserNo is required.")]
-        public string ClientSystemUserName { get; set; }
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "An BranchNo is required.")]
         public int BranchNo { get; set; }

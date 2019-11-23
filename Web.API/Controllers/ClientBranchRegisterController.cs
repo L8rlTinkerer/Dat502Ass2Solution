@@ -38,7 +38,7 @@ namespace Web.API.Controllers
             var newRequest = JsonConvert.DeserializeObject<InitalRequestToAddCBRDTO>(request);
 
             // check staff memeber is registered with the company (is a system user)
-            var staffSystemUser = _repository.SystemUser.GetSystemUserById(newRequest.StaffSystemUserNo);
+            var staffSystemUser = _repository.SystemUser.GetSystemUserById(newRequest.SystemUserNo);
             if (staffSystemUser == null)
             {
                 return BadRequest("staffSystemUser does not exist");
@@ -46,7 +46,7 @@ namespace Web.API.Controllers
 
 
             // retrieve staffNo
-            var staff = _repository.StaffRepository.GetStaffNo(newRequest.StaffSystemUserNo);
+            var staff = _repository.StaffRepository.GetStaffNo(newRequest.SystemUserNo);
             if (staff == null)
             {
                 return BadRequest("staffSystemUser does not exist");
@@ -61,7 +61,7 @@ namespace Web.API.Controllers
             }
 
             // check client is registered with the company (is a system user)
-            var clientSystemUser = _repository.SystemUser.GetUserByUserNameAndUserType(newRequest.ClientSystemUserName);
+            var clientSystemUser = _repository.SystemUser.GetUserByUserNameAndUserType(newRequest.UserName);
             if (clientSystemUser == null)
             {
                 return BadRequest("clientSystemUser does not exist");
